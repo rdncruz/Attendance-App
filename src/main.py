@@ -30,7 +30,7 @@ def main(page: ft.Page):
 
     dlg_modal = ft.AlertDialog(
         modal = True,
-        title = ft.Text("Modal is Good"),
+        title = ft.Text("Please Confirm LOG Data"),
         content = ft.Column([]),
         actions = [
             ft.TextButton("Confirm", on_click = confirm_btn),
@@ -57,7 +57,6 @@ def main(page: ft.Page):
             txt_date,
             txt_time,
             ft.Text(f"Status: {status}"),
-
         ]
         page.open(dlg_modal)
 
@@ -83,6 +82,11 @@ def main(page: ft.Page):
         run_date.value = f"Date:  {current_date}"
         run_time.value = f"Time: {current_time}"
         
+        if current_time >= "18:01:00":
+            btn_clock.text = "Time-Out"
+        elif current_time >= "00:01:00":
+            btn_clock.text = "Time-in"
+
         page.update()
         time.sleep(1)
 

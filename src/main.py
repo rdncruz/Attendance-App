@@ -1,5 +1,6 @@
 import flet as ft
-
+from datetime import datetime
+import time
 
 def main(page: ft.Page):
     page.title = "Attendance App"
@@ -9,8 +10,8 @@ def main(page: ft.Page):
 
     txt = ft.Text(value = "Good Day. Please be on Time!!", size = 50)
     txt_name = ft.TextField(label = "Name", width = 300 )
-    txt_time = ft.TextField(label = "Time", read_only = True, width = 300)
-    txt_date = ft.TextField(label = "Date", read_only = True, width = 300)
+    run_date = ft.TextField(label = "Date", read_only = True, width = 300)
+    run_time = ft.TextField(label = "Time", read_only = True, width = 300)
     
     dept_dropdown = ft.Dropdown(
         label = "Department",
@@ -44,10 +45,19 @@ def main(page: ft.Page):
         txt,
         txt_name,
         dept_dropdown,
-        txt_time,
-        txt_date,
+        run_date,
+        run_time,
         btn_clock,
     )
+
+    while True:
+        current_date = datetime.now().strftime("%Y-%m-%d")
+        current_time = datetime.now().strftime("%H:%M:%S")
+        run_date.value = f"Date:  {current_date}"
+        run_time.value = f"Time: {current_time}"
+        
+        page.update()
+        time.sleep(1)
 
 
 ft.app(main)

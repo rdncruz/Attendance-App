@@ -85,7 +85,7 @@ def main(page: ft.Page):
         if current_time >= "18:01:00":
             btn_clock.text = "Time-Out"
         elif current_time >= "00:01:00":
-            btn_clock.text = "Time-in"
+            btn_clock.text = "Time-ins"
 
         page.update()
         time.sleep(1)

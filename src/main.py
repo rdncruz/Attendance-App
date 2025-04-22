@@ -1,6 +1,7 @@
 import flet as ft
 from datetime import datetime
 import time
+import gspread
 
 def main(page: ft.Page):
     page.title = "Attendance App"
@@ -14,6 +15,11 @@ def main(page: ft.Page):
     run_time = ft.TextField(label = "Time", read_only = True, width = 300)
     txt_time = ft.Text("")  
     txt_date = ft.Text("")
+
+    gc = gspread.service_account(filename='C:/Users/crenz/Documents/GitHub/Attendance-App/src/credentials.json')
+
+    sh = gc.open_by_key("1X_OgCH1dKqftUKEPXluDsUk6plmh8B0nvIkWyI-BiKs")
+    print(sh.sheet1.get('A1'))
     
     dept_dropdown = ft.Dropdown(
         label = "Department",

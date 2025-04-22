@@ -9,10 +9,18 @@ def main(page: ft.Page):
 
     txt = ft.Text(value = "Good Day. Please be on Time!!", size = 50)
     txt_name = ft.TextField(label = "Name", width = 300 )
-    txt_dept = ft.TextField(label = "Department", width = 300)
     txt_time = ft.TextField(label = "Time", read_only = True, width = 300)
     txt_date = ft.TextField(label = "Date", read_only = True, width = 300)
     
+    dept_dropdown = ft.Dropdown(
+        label = "Department",
+        width = 300,
+        options = [
+            ft.dropdown.Option("Web Dev"),
+            ft.dropdown.Option("Data Analyst"),
+            ft.dropdown.Option("QA Tester"),
+        ]
+    )
 
     def confirm_btn(e):
         page.close(dlg_modal)
@@ -20,6 +28,7 @@ def main(page: ft.Page):
     dlg_modal = ft.AlertDialog(
         modal = True,
         title = ft.Text("Modal is Good"),
+        
         actions = [
             ft.TextButton("Confirm", on_click = confirm_btn),
         ]
@@ -34,7 +43,7 @@ def main(page: ft.Page):
     page.add(
         txt,
         txt_name,
-        txt_dept,
+        dept_dropdown,
         txt_time,
         txt_date,
         btn_clock,

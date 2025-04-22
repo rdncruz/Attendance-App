@@ -2,24 +2,42 @@ import flet as ft
 
 
 def main(page: ft.Page):
-    counter = ft.Text("0", size=50, data=0)
+    page.title = "Attendance App"
+    page.window.center()
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
-    def increment_click(e):
-        counter.data += 1
-        counter.value = str(counter.data)
-        counter.update()
+    txt = ft.Text(value = "Good Day. Please be on Time!!", size = 50)
+    txt_name = ft.TextField(label = "Name", width = 300 )
+    txt_dept = ft.TextField(label = "Department", width = 300)
+    txt_time = ft.TextField(label = "Time", read_only = True, width = 300)
+    txt_date = ft.TextField(label = "Date", read_only = True, width = 300)
+    
 
-    page.floating_action_button = ft.FloatingActionButton(
-        icon=ft.Icons.ADD, on_click=increment_click
+    def confirm_btn(e):
+        page.close(dlg_modal)
+
+    dlg_modal = ft.AlertDialog(
+        modal = True,
+        title = ft.Text("Modal is Good"),
+        actions = [
+            ft.TextButton("Confirm", on_click = confirm_btn),
+        ]
+    )
+
+    btn_clock = ft.ElevatedButton(
+        "Time in",
+        on_click=lambda e: page.open(dlg_modal),
+        width = 200,
+        height = 40, 
     )
     page.add(
-        ft.SafeArea(
-            ft.Container(
-                counter,
-                alignment=ft.alignment.center,
-            ),
-            expand=True,
-        )
+        txt,
+        txt_name,
+        txt_dept,
+        txt_time,
+        txt_date,
+        btn_clock,
     )
 
 

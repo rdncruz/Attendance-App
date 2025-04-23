@@ -53,16 +53,10 @@ def main(page: ft.Page):
         for name in names:
             name = name.strip()
             unique_names.append(name)
-            
-        #unique_names = set(name for name in names if name.strip())
         option_list = []
         for name in unique_names:
             option_list.append(ft.dropdown.Option(name))
-
         return option_list
-
-        #return [ft.dropdown.Option(name) for name in unique_names]
-    
     name_dropdown.options = get_all_names()
 
     # FUNCTION TO GET THE NEXT EMPTY ROW in COLUMN A1(1st COLUMN)
@@ -74,8 +68,6 @@ def main(page: ft.Page):
 
 
     # ALERT DIALOG SHOWN AFTER A SUCCESFUL CLOCK-IN, CLOCK-OUT AND WARNING WHEN FIELD ARE EMPTY
-    
-
     def clock_out_btn(e):
         page.close(dlg_clock_out)    
 
@@ -129,21 +121,6 @@ def main(page: ft.Page):
                 
         else:
             page.open(dlg_alert)
-
-            '''dlg_modal.content.controls = [
-                ft.Text(f"Name: {name}"),
-                ft.Text(f"Department: {dept}"),
-                txt_date,
-                txt_time,
-                #ft.Text(f"Status: {status}"),
-            ]'''
-
-
-
-
-
-
-
 
 
     btn_clock = ft.ElevatedButton(

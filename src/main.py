@@ -150,15 +150,12 @@ def main(page: ft.Page):
             txt_name.visible = False
             name_dropdown.visible = True
             dept_dropdown.visible = False
-            
-    
+
         elif real_time >= "09:00:00":
             txt_in.visible = True
             name_dropdown.visible = False
             txt_name.visible = True
             
-            
-
         page.update()
         time.sleep(1)
 

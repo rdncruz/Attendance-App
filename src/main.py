@@ -49,11 +49,23 @@ def main(page: ft.Page):
         real_time = datetime.now().strftime("%H:%M:%S")  
         if real_time >= "16:43:00":
             btn_clock.text = "Time-Out"
+<<<<<<< HEAD
 
 
+=======
+            txt_in.visible = False
+            txt_out.visible =  True
+            txt_name.visible = False
+            name_dropdown.visible = True
+            dept_dropdown.visible = False
+            
+    
+>>>>>>> parent of edadea5 (Update main.py)
         elif real_time >= "09:00:00":
             btn_clock.text = "Time-In"
             
+            
+
         page.update()
         time.sleep(1)
 
